@@ -1,0 +1,381 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+nav {
+    background-color: #333;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: #ecf0f1;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+nav a:hover {
+    background-color: #2980b9;
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
+    /* padding: 1px; */
+}
+
+nav button {
+    background-color: #333;
+    color: white;
+    border: 2px solid transparent;
+    padding: 8px 16px;
+    cursor: pointer;
+    /* transition: all 0.3s ease; */
+}
+
+nav button:hover {
+    background-color: #e61333;
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
+    /* padding: 1px; */
+}
+
+nav button.underline-hover {
+    border: none;
+    position: relative;
+}
+
+nav button.underline-hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3498db;
+    transition: width 0.3s ease;
+}
+
+nav button.underline-hover:hover::after {
+    width: 100%;
+}
+
+nav button{
+    background-color: #333;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    
+}
+
+
+
+h2 {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 2.5em;
+    color: #2c3e50;
+}
+
+
+#lostList, #foundList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.post {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.post h3 {
+    margin: 0 0 15px;
+    font-size: 1.5em;
+    color: #2c3e50;
+}
+
+.post p {
+    margin: 10px 0;
+    font-size: 1em;
+    color: #555;
+}
+
+.post p strong {
+    color: #2c3e50;
+}
+
+.post img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.post em {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #888;
+    text-align: right;
+}
+
+/* No Posts Message */
+.no-posts {
+    text-align: center;
+    font-size: 1.2em;
+    color: #888;
+    margin-top: 20px;
+}
+
+/* Profile Container */
+.profile-container {
+    text-align: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.profile-header h2 {
+    margin: 10px 0;
+    font-size: 2em;
+    color: #2c3e50;
+}
+
+.profile-header p {
+    color: #555;
+}
+
+.profile-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.detail-box {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+}
+
+.detail-box label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.detail-box p {
+    margin: 0;
+    color: #555;
+}
+
+.editField {
+    display: none;
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#saveButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+#saveButton:hover {
+    background-color: #218838;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    margin: 10% auto;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+input, select {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+@media (max-width: 768px) {
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .post {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .profile-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 2em;
+    }
+
+    .profile-header img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-header h2 {
+        font-size: 1.5em;
+    }
+}
+
+
+
+.message {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.message.sent {
+    background: #6a11cb;
+    color: white;
+    margin-left: auto;
+}
+
+.message.received {
+    background: #f0f0f0;
+    margin-right: auto;
+}
+
+.message small {
+    display: block;
+    margin-top: 4px;
+    opacity: 0.8;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #3498db;
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid #444;
+    padding-top: 15px;
+    margin-top: 15px;
+}

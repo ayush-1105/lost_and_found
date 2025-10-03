@@ -1,0 +1,205 @@
+/* Bubble Design Sign Up Form Styles */
+
+body, h2, p {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4; /* Light background for contrast */
+}
+
+.container {
+    background-color: #ffffff; /* White background for the form */
+    padding: 30px;
+    border-radius: 30px; /* More rounded corners for bubble effect */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    width: 350px;
+    text-align: center;
+    position: relative; /* For pseudo-element positioning */
+    overflow: hidden; /* To contain the pseudo-element */
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -20px; /* Adjust to position the bubble */
+    left: -20px; /* Adjust to position the bubble */
+    right: -20px; /* Adjust to position the bubble */
+    bottom: -20px; /* Adjust to position the bubble */
+    background: rgba(106, 17, 203, 0.1); /* Light bubble color */
+    border-radius: 50%; /* Full bubble shape */
+    z-index: -1; /* Place behind the container */
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px; 
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #6a11cb; 
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6a11cb; 
+    color: white;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2575fc; 
+}
+
+p {
+    margin-top: 15px;
+    color: #666;
+}
+
+a {
+    color: #6a11cb; 
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+
+a:hover {
+    text-decoration: underline; 
+}
+
+
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85em;
+    margin: -8px 0 10px 2px;
+    text-align: left;
+    display: none;
+    animation: shake 3s ease-in-out;
+}
+
+.input-error {
+    border-color: #dc3545 !important;
+    background-color: #fff5f5;
+    animation: shake 3s ease-in-out;
+}
+
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    max-width: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    position: relative;
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: white;
+    background: #ff4444;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: toastSlideIn 3s ease-out;
+    transform: translateX(110%);
+    overflow: hidden;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.8);
+    animation: toastProgress 3s linear forwards;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 0;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.toast-close:hover {
+    color: white;
+}
+
+@keyframes toastSlideIn {
+    from {
+        transform: translateX(110%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes toastProgress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85em;
+    margin: -8px 0 10px 2px;
+    text-align: left;
+    display: none;
+    animation: shake 3s ease-in-out;
+}
+
+.input-error {
+    border-color: #dc3545 !important;
+    background-color: #fff5f5;
+    animation: shake 5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}

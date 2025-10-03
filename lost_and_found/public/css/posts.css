@@ -1,0 +1,211 @@
+/*
+ * public/css/posts.css
+ * Stylesheet for the Lost and Found pages.
+ */
+
+/* Main Container and Title */
+.container h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid #6a11cb;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+/* Post Grid Layout */
+.post-grid {
+    display: grid;
+    /* Responsive grid: 1 column on small screens, auto-fill on larger screens */
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- The Post Card with Animated Border --- */
+
+.post-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; /* Important for the border-radius on the image */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Needed for the animated border */
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Animated Gradient Border Effect */
+.post-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, #6a11cb, #2575fc, #f7971e, #ff4b1f) border-box;
+    mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    z-index: -1; /* Place it behind the content */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.post-card:hover::before {
+    opacity: 1; /* Show the border on hover */
+    animation: gradient-animation 4s linear infinite;
+}
+
+/* --- Keyframes for the Gradient Animation --- */
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* The background that will be animated */
+.post-card::before {
+    background-size: 200% 200%;
+}
+
+
+/* Post Card Image */
+.post-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.post-image-container {
+    height: 250px;
+    overflow: hidden;
+}
+
+.post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents image distortion */
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover .post-image {
+    transform: scale(1.05); /* Subtle zoom effect on hover */
+}
+
+/* Post Card Content */
+.post-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Makes the content area fill the space */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #6a11cb;
+}
+
+.post-content h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.post-content h4 {
+    margin: 0.5rem 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.post-content small {
+    color: #777;
+}
+
+/* Action Buttons */
+.post-actions {
+    margin-top: auto; /* Pushes buttons to the bottom */
+    padding-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    border-top: 1px solid #eee;
+}
+
+.post-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.done-btn {
+    background-color: #28a745;
+    color: white;
+}
+.done-btn:hover { background-color: #218838; }
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+.delete-btn:hover { background-color: #c82333; }
+
+/* Status message for completed posts */
+.post-card.done {
+    opacity: 0.7;
+    background-color: #f8f9fa;
+}
+.post-card.done:hover {
+    transform: none; /* Disable hover effect for completed items */
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Tablet View */
+@media (min-width: 600px) {
+    .post-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop View */
+@media (min-width: 900px) {
+    .post-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Large Desktop View */
+@media (min-width: 1200px) {
+    .post-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
