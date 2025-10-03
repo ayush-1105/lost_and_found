@@ -5,7 +5,7 @@ function getDbConnection() {
     $port = '5432';
     $dbname = 'lost_and_found';
     $user = 'postgres';
-    $password = 'ayush9021'; 
+    $password = 'your_password'; 
 
     $conn_string = "host={$host} port={$port} dbname={$dbname} user={$user} password={$password}";
     $conn = pg_connect($conn_string);
@@ -17,4 +17,5 @@ function getDbConnection() {
     }
     return $conn;
 }
+
 ?>
